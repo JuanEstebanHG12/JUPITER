@@ -1,1 +1,5 @@
-//This is for the headers like [ LOGIN ], [ MAIN MENU ].
+package com.management.jupiter.views;
+
+public class ConsoleView {
+
+}
