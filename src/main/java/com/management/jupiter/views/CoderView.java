@@ -1,5 +1,6 @@
 package com.management.jupiter.views;
 
+import com.management.jupiter.controllers.AdminController;
 import com.management.jupiter.models.Coder;
 import com.management.jupiter.ui.users.CoderUI;
 import com.management.jupiter.util.scanner.ScannerUtil;
@@ -7,11 +8,11 @@ import com.management.jupiter.util.scanner.ScannerUtil;
 public class CoderView {
 
     private final ScannerUtil input;
-    private final Coder coder;
+    private final AdminController controller;
 
-    public CoderView (ScannerUtil input, Coder coder) {
+    public CoderView (ScannerUtil input, AdminController controller) {
         this.input = input;
-        this.coder = coder;
+        this.controller = controller;
     }
 
     public void show (Coder coder) {
