@@ -2,40 +2,52 @@ package com.management.jupiter.controllers;
 
 import com.management.jupiter.models.User;
 import com.management.jupiter.services.UserServices;
-
-import java.util.Scanner;
+import com.management.jupiter.ui.auth.LoginUI;
+import com.management.jupiter.util.scanner.ScannerUtil;
 
 public class UserController {
-    public static void LoginController() throws Exception {
-        var scanner = new Scanner(System.in);
-        System.out.println("=== SISTEMA DE LOGIN JUPITER ===");
 
+    private final ScannerUtil input;
+
+    public UserController (ScannerUtil input) {
+        this.input = input;
+    }
+
+    public void LoginController() throws Exception {
+
+        LoginUI.login();
 
         // 2. DELEGAR AL SERVICE (No al Repository directamente)
         User loggedUser = null;
 
         for (var i = 0; i<3; i++){
+
             try {
                 // 1. CAPTURAR DATOS
-                System.out.print("Email: ");
-                String email = scanner.nextLine();
+                String email = input.readString("Email: ");
 
-                System.out.print("Password: ");
-                String password = scanner.nextLine();
+                String password = input.readString("Password: ");
+
                 loggedUser = UserServices.LoginService(email, password);
+
                 if (loggedUser != null) {
                     break;
                 }
-            }catch (Exception e){
-                System.out.println(e.getMessage());
+
+            } catch (Exception e) {
+
+                System.err.println(e.getMessage());
+
             }
+
         }
 
         // 3. DECIDIR QUÉ MOSTRAR
         if (loggedUser != null) {
-            System.out.println("\n Access Successfully." + loggedUser);
+            System.out.println("\n Access Successfully." + loggedUser.getUsername());
         } else {
             System.out.println("\n Error: Access Deny.");
         }
+
     }
 }
