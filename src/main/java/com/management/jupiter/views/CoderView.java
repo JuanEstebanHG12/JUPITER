@@ -1,5 +1,44 @@
 package com.management.jupiter.views;
 
-public class Coderview() {
+import com.management.jupiter.models.Coder;
+import com.management.jupiter.ui.users.CoderUI;
+import com.management.jupiter.util.scanner.ScannerUtil;
+
+public class CoderView {
+
+    private final ScannerUtil input;
+    private final Coder coder;
+
+    public CoderView (ScannerUtil input, Coder coder) {
+        this.input = input;
+        this.coder = coder;
+    }
+
+    public void show (Coder coder) {
+
+        CoderUI.coder(coder);
+        CoderUI.coderDec();
+
+        int dec;
+
+        do {
+
+            dec = input.readInt("Which is your decision?: ");
+
+            switch (dec) {
+                case 1:
+                    //Add Soon...
+                    break;
+                case 2:
+                    //Add Soon...
+                    break;
+                case 3:
+                    //Add Soon...
+                    break;
+            }
+
+        } while (dec != 0);
+
+    }
 
 }
