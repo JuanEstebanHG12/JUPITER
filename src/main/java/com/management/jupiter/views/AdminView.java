@@ -1,0 +1,116 @@
+package com.management.jupiter.views;
+
+import com.management.jupiter.controllers.AdminController;
+import com.management.jupiter.models.Admin;
+import com.management.jupiter.ui.users.AdminUI;
+import com.management.jupiter.util.scanner.ScannerUtil;
+
+public class AdminView {
+
+    private final ScannerUtil input;
+    private final AdminController controller;
+
+    public AdminView (ScannerUtil input, AdminController controller) {
+        this.input = input;
+        this.controller = controller;
+    }
+
+    public void show (Admin admin) {
+
+        AdminUI.admin(admin);
+        AdminUI.adminDec();
+
+        int dec;
+
+        do {
+
+            dec = input.readInt("Which is your decision?: ");
+
+            switch (dec) {
+                case 1:
+                    //Add Soon...
+                    break;
+                case 2:
+                    //Add Soon...
+                    break;
+                case 3:
+                    //Add Soon...
+                    break;
+                case  4:
+                    clanManagement(admin);
+                    break;
+                case 5:
+                    userManagement(admin);
+                    break;
+            }
+
+        } while (dec != 0);
+
+    }
+
+    public void clanManagement(Admin admin){
+
+        AdminUI.admin(admin);
+        AdminUI.clanManage();
+
+        int dec;
+
+        do {
+
+            dec = input.readInt("Which is your decision?: ");
+
+            switch (dec) {
+                case 1:
+                    //Add Soon...
+                    break;
+                case 2:
+                    //Add Soon...
+                    break;
+                case 3:
+                    //Add Soon...
+                    break;
+                case  4:
+                    //Add Soon...
+                    break;
+                case 5:
+                    //Add Soon...
+                    break;
+                case 6:
+                    //Add Soon...
+                    break;
+            }
+
+        } while (dec != 0);
+
+    }
+
+    public void userManagement(Admin admin){
+
+        AdminUI.admin(admin);
+        AdminUI.userManage();
+
+        int dec;
+
+        do {
+
+            dec = input.readInt("Which is your decision?: ");
+
+            switch (dec) {
+
+                case 1:
+                    //Add Soon...
+                    break;
+                case 2:
+                    //Add Soon...
+                    break;
+                case 3:
+                    //Add Soon...
+                    break;
+
+            }
+
+        } while (dec != 0);
+
+    }
+
+}
