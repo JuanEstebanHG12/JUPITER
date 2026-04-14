@@ -1,77 +1,52 @@
 package com.management.jupiter.views;
-import java.util.Scanner;
+
+import com.management.jupiter.controllers.UserController;
+import com.management.jupiter.models.User;
+import com.management.jupiter.ui.auth.LoginUI;
+import com.management.jupiter.util.scanner.ScannerUtil;
 
 public class LoginView {
 
-    private Scanner scanner;
+    private final ScannerUtil input;
+    private final UserController controller;
 
-    public LoginView(){
-        scanner = new Scanner(System.in);
+    public LoginView(ScannerUtil input, UserController controller ){
+        this.input = input;
+        this.controller = controller;
     }
 
-    public String viewLogin(){
+    public User login () {
 
-    int option = 1;
+        User loggedUser = null;
 
-        do{
+        for (int i = 3; i > 0; i --){
 
-            System.out.println("========= LOGIN ==========");
+            LoginUI.login(i);
 
-            System.out.println("Email: ");
-            String email = scanner.nextLine();
+            try {
 
-            System.out.println("Password: ");
-            String password = scanner.nextLine();
+                String email = input.readString("Email: ");
+                String password = input.readString("Password: ");
 
-            if(email.equals("coder@gmail.com") && password.equals("123456")){
-                System.out.println("Login success!");
-                return "coder";
-            }
-            else if(email.equals("tl@gmail.com") && password.equals("123456")){
-                System.out.println("Login success!");
-                return "tl";
-            }else if(email.equals("admin@gmail.com") && password.equals("123456")){
-                System.out.println("Login success!");
-                return "admin";
-            }else{
+                loggedUser = controller.LoginController(email, password);
 
-                boolean again = true;
-
-                while(again){
-
-                    System.out.println("email or password incorrect ... ");
-
-                    System.out.println("1. Try again");
-                    System.out.println("0. Exit");
-
-                    option = scanner.nextInt();
-                    scanner.nextLine();
-
-                    switch (option){
-                        case 1:
-                            again = false;
-                            break;
-
-                        case 0:
-                            System.out.println("Exit ...");
-                            again = false;
-                            option = 0;
-                            break;
-                        default:
-                            System.out.println("Incorrect option ...");
-                    }
+                // 3. DECIDIR QUÉ MOSTRAR
+                if (loggedUser != null){
+                    System.out.println("\n Access Successfully." + loggedUser.getUsername());
+                    break;
+                }else {
+                    System.out.println("\n Error: Access Deny.");
                 }
 
+            }catch (Exception e) {
+
+                System.err.println(e.getMessage());
 
             }
 
-        }while(option != 0);
+        }
 
-        return "exit";
+        return loggedUser;
+
     }
-
-    public void closeScanner(){
-        scanner.close();
-    }
-
 }
