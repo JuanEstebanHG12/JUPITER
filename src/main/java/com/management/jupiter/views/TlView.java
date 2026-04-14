@@ -1,4 +1,5 @@
 package com.management.jupiter.views;
+import com.management.jupiter.controllers.TlController;
 import com.management.jupiter.models.Tl;
 import com.management.jupiter.ui.users.TeamLeaderUI;
 import com.management.jupiter.util.scanner.ScannerUtil;
@@ -6,9 +7,9 @@ import com.management.jupiter.util.scanner.ScannerUtil;
 public class TlView {
 
     private final ScannerUtil input;
-    private final Tl controller;
+    private final TlController controller;
 
-    public TlView(ScannerUtil input, Tl controller){
+    public TlView(ScannerUtil input, TlController controller){
         this.input = input;
         this.controller = controller;
     }
